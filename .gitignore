@@ -10,7 +10,7 @@ _ss_environment.php
 
 # ignore composer vendor folder
 /vendor/
-
+/siteconfig/
 
 ### Silverstripe ###
 assets/_combinedfiles/
