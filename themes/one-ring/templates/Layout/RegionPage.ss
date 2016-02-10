@@ -10,7 +10,7 @@
 
 				<!-- BEGIN BLOG LISTING -->
 				<div class="grid-style1 clearfix">
-				    <% loop $Regions %>
+				    <% loop $PaginatedArticles %>
 				    <div class="item col-md-12"><!-- Set width to 4 columns for grid view mode only -->
 				        <div class="image image-large">
 				            <a href="$Link">
@@ -31,20 +31,31 @@
 
 
 				<!-- BEGIN PAGINATION -->
+				<% if $PaginatedArticles.MoreThanOnePage %>
 				<div class="pagination">
-					<ul id="previous">
-						<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+					<% if $PaginatedArticles.NotFirstPage %>
+					<ul id="previous col-xs-6">
+						<li><a href="$PaginatedArticles.PrevLink"><i class="fa fa-chevron-left"></i></a></li>
 					</ul>
-					<ul>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
+					<% end_if %>
+					<ul class="hidden-xs">
+						<% loop $PaginatedArticles.PaginationSummary %>
+							<% if $Link %>
+								<li <% if $CurrentBool %>class="active"<% end_if %>>
+									<a href="$Link">$PageNum</a>
+								</li>
+							<% else %>
+								<li>...</li>
+							<% end_if %>
+						<% end_loop %>
 					</ul>
-					<ul id="next">
-						<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+					<% if $PaginatedArticles.NotLastPage %>
+					<ul id="next col-xs-6">
+						<li><a href="$PaginatedArticles.NextLink"><i class="fa fa-chevron-right"></i></a></li>
 					</ul>
+					<% end_if %>
 				</div>
+				<% end_if %>
 				<!-- END PAGINATION -->
 
 			</div>
