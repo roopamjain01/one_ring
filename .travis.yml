@@ -27,4 +27,4 @@ before_script:
 #Execute tests with or without coverage
 script:
   # Execute tests with no coverage.  This is the fastest option
-  - "if [ \"$COVERAGE\" = \"0\" ]; then vendor/bin/phpunit $MODULE_PATH/tests/; fi"
+  - "if [ \"$COVERAGE\" = \"0\" ]; Sphpunit $MODULE_PATH/tests/; fi"
