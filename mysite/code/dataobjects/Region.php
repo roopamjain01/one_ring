@@ -1,10 +1,11 @@
 <?php
-class Region extends DataObject {
 
-    private static $db = array (
+class Region extends DataObject {
+   private static $db = array (
         'Title' => 'Varchar',
         'Description' => 'HTMLText',
     );
+
 
     private static $has_one = array (
         'Photo' => 'Image',
@@ -15,6 +16,21 @@ class Region extends DataObject {
         'Articles' => 'ArticlePage'
     );
 
+    private static $summary_fields = array (
+        'GridThumbnail' => '',
+        'Title' => 'Title of region',
+        'Description' => 'Short description',
+    );
+
+
+    public function getGridThumbnail() {
+        if($this->Photo()->exists()) {
+            return $this->Photo()->SetWidth(100);
+        }
+
+        return '(no image)';
+    }
+
     public function getCMSFields() {
         $fields = FieldList::create(
             TextField::create('Title'),
@@ -23,41 +39,29 @@ class Region extends DataObject {
         );
 
         $uploader->setFolderName('region-photos');
-        $uploader->getValidator()->setAllowedExtensions(array('png','gif','jpeg','jpg'));
+        $uploader->getValidator()->setAllowedExtensions(array(
+            'png','gif','jpeg','jpg'
+        ));
 
         return $fields;
     }
 
-    private static $summary_fields = array (
-        'GridThumbnail' => '',
-        'Title' => 'Title of region',
-        'Description' => 'Short description'
-    );
 
-    public function getGridThumbnail() {
-
-        if ($this->Photo()->exists()) {
-            return $this->Photo()->SetWidth(100);
-        }
-
-        return "(no image)";
+    public function Link() {
+        return $this->RegionsPage()->Link('show/'.$this->ID);
     }
 
-     public function Link() {
-
-        $filter = new URLSegmentFilter();
-        return $this->RegionsPage()->Link('show/'.$filter->filter($this->Title));
-    }
 
     public function LinkingMode() {
         return Controller::curr()->getRequest()->param('ID') == $this->ID ? 'current' : 'link';
     }
 
-     public function ArticlesLink () {
+    public function ArticlesLink () {
         $page = ArticleHolder::get()->first();
 
         if($page) {
             return $page->Link('region/'.$this->ID);
         }
     }
+
 }

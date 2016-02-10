@@ -1,11 +1,13 @@
 <?php
+
 class RegionsPage extends Page {
 
-	private static $has_many = array (
-	    'Regions' => 'Region'
-	);
+    private static $has_many = array (
+        'Regions' => 'Region',
+    );
 
-	public function getCMSFields() {
+
+    public function getCMSFields() {
         $fields = parent::getCMSFields();
         $fields->addFieldToTab('Root.Regions', GridField::create(
             'Regions',
@@ -20,24 +22,25 @@ class RegionsPage extends Page {
 
 class RegionsPage_Controller extends Page_Controller {
 
-     private static $allowed_actions = array (
-        'show',
-        'getRegions'
-    );
+   /* public function index(SS_HTTPRequest $request) {
 
-    private static $url_handlers = array(
-        'show/$Title' => 'show',
+        $Regions = Region::get()->first();
+        //var_export($Regions);
+        return array (
+            'Regions' => $Regions,
+        );
+     //var_dump($this->has_many);
+    }*/
+
+    private static $allowed_actions = array (
+        'show'
     );
 
     public function show(SS_HTTPRequest $request) {
-        $title = $request->param('Title');
-
-        $title = ucwords(str_replace('-', ' ', $title));
-
-        $region = Region::get()->filter('Title', $title)->first();
+        $region = Region::get()->byID($request->param('ID'));
 
         if(!$region) {
-            return $this->httpError(404,'That region could not be found');
+            return $this->httpError(404, 'That region could not be found');
         }
 
         return array (
@@ -46,10 +49,4 @@ class RegionsPage_Controller extends Page_Controller {
         );
     }
 
-    public function PaginatedRegion($num = 10) {
-        return PaginatedList::create(
-            $this->Regions(),
-            $this->getRequest()
-        )->setPageLength($num);
-    }
 }
