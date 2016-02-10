@@ -21,11 +21,20 @@ class RegionsPage extends Page {
 class RegionsPage_Controller extends Page_Controller {
 
      private static $allowed_actions = array (
-        'show'
+        'show',
+        'getRegions'
+    );
+
+    private static $url_handlers = array(
+        'show/$Title' => 'show',
     );
 
     public function show(SS_HTTPRequest $request) {
-        $region = Region::get()->byID($request->param('ID'));
+        $title = $request->param('Title');
+
+        $title = ucwords(str_replace('-', ' ', $title));
+
+        $region = Region::get()->filter('Title', $title)->first();
 
         if(!$region) {
             return $this->httpError(404,'That region could not be found');
@@ -35,5 +44,12 @@ class RegionsPage_Controller extends Page_Controller {
             'Region' => $region,
             'Title' => $region->Title
         );
+    }
+
+    public function PaginatedRegion ($num = 10) {
+        return PaginatedList::create(
+            $this->Regions(),
+            $this->getRequest()
+        )->setPageLength($num);
     }
 }

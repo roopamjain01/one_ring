@@ -1,11 +1,17 @@
 <?php
 class Page extends SiteTree {
 
+	public static function MyMethod() {
+        return (1 + 1);
+    }
+
 	private static $db = array(
 	);
 
 	private static $has_one = array(
 	);
+
+
 
 }
 class Page_Controller extends ContentController {

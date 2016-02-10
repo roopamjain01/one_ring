@@ -11,6 +11,10 @@ class Region extends DataObject {
         'RegionsPage' => 'RegionsPage'
     );
 
+    private static $has_many = array (
+        'Articles' => 'ArticlePage'
+    );
+
     public function getCMSFields() {
         $fields = FieldList::create(
             TextField::create('Title'),
@@ -31,7 +35,8 @@ class Region extends DataObject {
     );
 
     public function getGridThumbnail() {
-        if($this->Photo()->exists()) {
+
+        if ($this->Photo()->exists()) {
             return $this->Photo()->SetWidth(100);
         }
 
@@ -39,10 +44,20 @@ class Region extends DataObject {
     }
 
      public function Link() {
-        return $this->RegionsPage()->Link('show/'.$this->ID);
+
+        $filter = new URLSegmentFilter();
+        return $this->RegionsPage()->Link('show/'.$filter->filter($this->Title));
     }
 
     public function LinkingMode() {
         return Controller::curr()->getRequest()->param('ID') == $this->ID ? 'current' : 'link';
+    }
+
+     public function ArticlesLink () {
+        $page = ArticleHolder::get()->first();
+
+        if($page) {
+            return $page->Link('region/'.$this->ID);
+        }
     }
 }
