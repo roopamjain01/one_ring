@@ -13,7 +13,7 @@ env:
 before_script:
   - phpenv rehash
   - composer self-update || true
-  - git clone git://github.com/shoaibali/one_ring.git ~/builds/ss
+  - git clone git://github.com/roopamjain01/one_ring.git ~/builds/ss
   - cd ~/builds/ss
   - wget https://gist.githubusercontent.com/shoaibali/da42301538a4fe098653/raw/0209590124c917a3dd69d9b1a52bf5c83cf670f0/_ss_environment.php
   - composer install
