@@ -46,7 +46,7 @@ class RegionsPage_Controller extends Page_Controller {
         );
     }
 
-    public function PaginatedRegion ($num = 10) {
+    public function PaginatedRegion($num = 10) {
         return PaginatedList::create(
             $this->Regions(),
             $this->getRequest()

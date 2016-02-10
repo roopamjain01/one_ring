@@ -1,12 +1,11 @@
 {
-	"name": "silverstripe/installer",
-	"description": "The SilverStripe Framework Installer",
+	"name": "roopamjain01/one_ring",
+	"description": "One ring shop tutorial",
 	"require": {
 		"php": ">=5.3",
 		"silverstripe/cms": "3.2.1",
 		"silverstripe/framework": "3.2.1",
 		"silverstripe/reports": "3.2.1",
-		"silverstripe/siteconfig": "3.2.1",
 		"silverstripe-themes/simple": "3.1.*",
 		"silverstripe/behat-extension": "*",
 		"silverstripe/blog": "^2.4"
