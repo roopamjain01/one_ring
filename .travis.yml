@@ -7,16 +7,25 @@ language: php
 php:
   - 5.6
 
-
 env:
-  - DB=MYSQL CORE_RELEASE=3.2
+  global:
+    - DB=MYSQL CORE_RELEASE=3.2
+
+    # Turn coverage off by default, as it's expensive time wise
+    - COVERAGE=0
+
+    # The path of the module when installed by composer
+    - MODULE_PATH=mysite
 
 before_script:
+  - phpenv rehash
   - composer self-update || true
   - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
   - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
   - cd ~/builds/ss
   - composer install
 
+#Execute tests with or without coverage
 script:
-  - vendor/bin/phpunit mysite/tests/unit/
+  # Execute tests with no coverage.  This is the fastest option
+  - "if [ \"$COVERAGE\" = \"0\" ]; then vendor/bin/phpunit $MODULE_PATH/tests/; fi"
