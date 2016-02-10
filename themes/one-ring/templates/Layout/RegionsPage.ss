@@ -44,7 +44,7 @@
 					<ul id="next">
 						<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
 					</ul>
-				</div>
+				</div>tat
 				<!-- END PAGINATION -->
 
 			</div>
