@@ -24,7 +24,7 @@ before_script:
   - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
   - cd ~/builds/ss
   - composer install
-  - ls -lah
+  - ls -Rlah mysite/tests/
 
 #Execute tests with or without coverage
 script:
