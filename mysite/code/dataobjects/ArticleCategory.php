@@ -13,13 +13,18 @@ class ArticleCategory extends DataObject {
         'Articles' => 'ArticlePage'
     );
 
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         return FieldList::create(
             TextField::create('Title')
         );
     }
 
-     public function Link () {
+    /**
+     * @method  ArticleHolder()
+     */
+    public function Link()
+    {
         return $this->ArticleHolder()->Link(
             'category/'.$this->ID
         );
