@@ -21,7 +21,7 @@ class ArticleCategory extends DataObject {
     }
 
     /**
-     * @method  ArticleHolder()
+     * @method ArticleHolder ArticleHolder()
      */
     public function Link()
     {
