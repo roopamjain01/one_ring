@@ -12,7 +12,6 @@ build:
       - wget https://gist.githubusercontent.com/shoaibali/da42301538a4fe098653/raw/0209590124c917a3dd69d9b1a52bf5c83cf670f0/_ss_environment.php
     override:
       - 'composer install --no-interaction'
+      - 'phpunit mysite/tests'
     after:
       - 'cd mysite'
-filter:
-  paths: [code/*, tests/*]
