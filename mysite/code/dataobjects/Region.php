@@ -1,11 +1,11 @@
 <?php
 
-class Region extends DataObject {
+class Region extends DataObject
+{
    private static $db = array (
         'Title' => 'Varchar',
         'Description' => 'HTMLText',
     );
-
 
     private static $has_one = array (
         'Photo' => 'Image',
@@ -22,16 +22,17 @@ class Region extends DataObject {
         'Description' => 'Short description',
     );
 
-
-    public function getGridThumbnail() {
-        if($this->Photo()->exists()) {
+    public function getGridThumbnail()
+    {
+        if ($this->Photo()->exists()) {
             return $this->Photo()->SetWidth(100);
         }
 
         return '(no image)';
     }
 
-    public function getCMSFields() {
+    public function getCMSFields()
+    {
         $fields = FieldList::create(
             TextField::create('Title'),
             HtmlEditorField::create('Description'),
@@ -46,20 +47,21 @@ class Region extends DataObject {
         return $fields;
     }
 
-
-    public function Link() {
+    public function Link()
+    {
         return $this->RegionsPage()->Link('show/'.$this->ID);
     }
 
-
-    public function LinkingMode() {
+    public function LinkingMode()
+    {
         return Controller::curr()->getRequest()->param('ID') == $this->ID ? 'current' : 'link';
     }
 
-    public function ArticlesLink () {
+    public function ArticlesLink()
+    {
         $page = ArticleHolder::get()->first();
 
-        if($page) {
+        if ($page) {
             return $page->Link('region/'.$this->ID);
         }
     }

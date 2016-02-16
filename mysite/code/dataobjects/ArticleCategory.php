@@ -1,5 +1,5 @@
 <?php
-class ArticleCategory extends SilverStripe\Model\DataObject
+class ArticleCategory extends DataObject
 {
 
     private static $db = array (
