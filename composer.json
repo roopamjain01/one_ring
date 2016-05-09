@@ -8,6 +8,12 @@
 		"silverstripe-themes/simple": "*",
 		"silverstripe/blog": "^2.3"
 	},
+	"require-dev": {
+		"silverstripe/behat-extension": "*",
+		"silverstripe/behat-perceptual-diff": "dev-master",
+		"behat/mink-goutte-driver": "^1.2",
+		"fabpot/goutte": "1.*@stable"
+	},
 	"config": {
 		"process-timeout": 600
 	},

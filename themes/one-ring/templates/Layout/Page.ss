@@ -22,6 +22,7 @@
 			</div>
 		</div>
 	</div>
+	$ReportForm
 </div>
 <!-- END CONTENT -->
 

@@ -2,7 +2,7 @@
 
 class Region extends DataObject
 {
-   private static $db = array (
+    private static $db = array (
         'Title' => 'Varchar',
         'Description' => 'HTMLText',
     );
@@ -60,7 +60,6 @@ class Region extends DataObject
     public function ArticlesLink()
     {
         $page = ArticleHolder::get()->first();
-
         if ($page) {
             return $page->Link('region/'.$this->ID);
         }

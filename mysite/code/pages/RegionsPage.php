@@ -22,16 +22,6 @@ class RegionsPage extends Page {
 
 class RegionsPage_Controller extends Page_Controller {
 
-   /* public function index(SS_HTTPRequest $request) {
-
-        $Regions = Region::get()->first();
-        //var_export($Regions);
-        return array (
-            'Regions' => $Regions,
-        );
-     //var_dump($this->has_many);
-    }*/
-
     private static $allowed_actions = array (
         'show'
     );
@@ -48,5 +38,4 @@ class RegionsPage_Controller extends Page_Controller {
             'Title' => $region->Title
         );
     }
-
 }

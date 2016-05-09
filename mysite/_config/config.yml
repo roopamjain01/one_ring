@@ -12,3 +12,6 @@ SSViewer:
 SiteConfig:
   extensions:
     - SiteConfigExtension
+
+Security:
+  token: 1bddcfc914469b7a2c6b0a63985b1831c3898b2a
