@@ -9,6 +9,7 @@ class RegionTest extends SapphireTest {
  		// $photo = new Image();
  		// $photo->
 		$region = new Region();
+
 		// $region->PhotoID = $photo->ID;
 		// $region->write();
  		$this->assertEquals("(no image)", $region->getGridThumbnail());
