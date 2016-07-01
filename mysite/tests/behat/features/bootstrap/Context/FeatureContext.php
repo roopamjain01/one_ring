@@ -101,8 +101,12 @@ class FeatureContext extends SilverStripeContext {
     //        $container->get('some_service')->doSomethingWith($argument);
     //    }
     //
-    public function thereShouldBeAnAbuseReportForWithReason($arg1, $arg2)
+    /**
+     * @Given /^there should be an abuse report for "([^"]*)" with reason "([^"]*)"$/
+     */
+    public function thereShouldBeAnAbuseReportForWithReason($id, $reason)
     {
-        throw new PendingException();
+        $page = $this->fixtureFactory->get('Page', $id);
+        assertEquals(1, $page->PageAbuseReports()->filter('Reason', $reason)->Count());
     }
 }

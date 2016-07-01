@@ -13,7 +13,7 @@ default:
     SilverStripe\BehatExtension\MinkExtension:
       # Adjust "base_url" to your own website URL.
       # Can be set via environment variables or _ss_environment.php/$_FILE_TO_URL_MAPPING as well.
-      base_url: http://one-ring.roopamjain-lp.wgtn.cat-it.co.nz
+      base_url: http://one_ring.roopamjain-lp.wgtn.cat-it.co.nz
       files_path: %behat.paths.base%/framework/tests/behat/features/files/
       default_session: selenium2
       javascript_session: selenium2
@@ -25,5 +25,3 @@ default:
 
 Security:
   token: b2e812c5de61db67c43d133c464833907d474d93
-
-
